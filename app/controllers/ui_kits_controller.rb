@@ -1,0 +1,2 @@
+class UiKitsController < ApplicationController
+end

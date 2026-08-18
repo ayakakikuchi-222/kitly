@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_17_084224) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_18_020409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "components", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.text "css_code"
+    t.text "html_code"
+    t.bigint "ui_kit_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ui_kit_id"], name: "index_components_on_ui_kit_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "component_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.string "role"
+    t.datetime "updated_at", null: false
+    t.index ["component_id"], name: "index_messages_on_component_id"
+  end
+
+  create_table "ui_kits", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_ui_kits_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,4 +53,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_17_084224) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "components", "ui_kits"
+  add_foreign_key "messages", "components"
+  add_foreign_key "ui_kits", "users"
 end
