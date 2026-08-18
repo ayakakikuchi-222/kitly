@@ -1,5 +1,8 @@
 class UiKitsController < ApplicationController
   before_action :set_ui_kit, only: [:destroy]
+  def show
+    @ui_kit = UiKit.find(params[:id])
+  end
 
   def index
     @ui_kits = current_user.ui_kits.order(created_at: :desc)
