@@ -1,0 +1,12 @@
+<h1>My UI Kits</h1>
+
+<%= link_to "New UI Kit", new_ui_kit_path %>
+
+<ul>
+  <% @ui_kits.each do |ui_kit| %>
+    <li>
+      <%= ui_kit.name %> - <%= ui_kit.description %>
+    </li>
+    <%= button_to "Delete", ui_kit_path(ui_kit), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+  <% end %>
+</ul>
