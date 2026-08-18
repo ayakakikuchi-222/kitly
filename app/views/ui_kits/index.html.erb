@@ -1,12 +1,19 @@
-<h1>My UI Kits</h1>
+<div class="kitly-home">
+  <h1>My UI Kits</h1>
 
-<%= link_to "New UI Kit", new_ui_kit_path %>
+  <%= link_to "New UI Kit", new_ui_kit_path %>
 
-<ul>
-  <% @ui_kits.each do |ui_kit| %>
-    <li>
-      <%= ui_kit.name %> - <%= ui_kit.description %>
-    </li>
-    <%= button_to "Delete", ui_kit_path(ui_kit), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+
+  <% if @ui_kits.any? %>
+    <ul>
+      <% @ui_kits.each do |ui_kit| %>
+        <li>
+          <%= link_to ui_kit.name, ui_kit_path(ui_kit) %> - <%= ui_kit.description %>
+        </li>
+      <%= button_to "Delete", ui_kit_path(ui_kit), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No kits yet — time to make your first one!</p>
   <% end %>
-</ul>
+</div>
