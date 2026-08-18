@@ -1,56 +1,57 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<h2>this is the homepage</h2>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap');
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Claude Design</title>
-    <link rel="icon" type="image/png" href="/design/favicon.png" />
-    <script>
+  .kitly-home {
+    background: #d6ecf0;
+    font-family: 'Baloo 2', sans-serif;
+    min-height: 100vh;
+    padding: 24px 5vw 80px;
+  }
+  .kitly-nav { display: flex; align-items: center; justify-content: space-between; }
+  .kitly-logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 28px; color: #d94a5e; text-decoration: none; }
+  .kitly-logo-dot { width: 44px; height: 44px; border-radius: 50%; background: #d94a5e; box-shadow: 0 5px 0 #b23548; display: flex; align-items: center; justify-content: center; }
+  .kitly-logo-dot::after { content: ""; width: 16px; height: 16px; border-radius: 50%; background: #f7d3da; }
+  .kitly-nav-links { display: flex; gap: 32px; align-items: center; }
+  .kitly-nav-links a { color: #6d1c29; font-weight: 700; text-decoration: none; font-size: 18px; }
+  .btn-kitly { display: inline-block; border: none; border-radius: 999px; padding: 14px 32px; font-family: inherit; font-weight: 700; font-size: 18px; text-decoration: none; cursor: pointer; }
+  .btn-cherry { background: #d94a5e; color: white; box-shadow: 0 6px 0 #b23548; }
+  .btn-berry { background: #6d1c29; color: white; box-shadow: 0 6px 0 #4aononono1119; }
+  .btn-white { background: white; color: #6d1c29; box-shadow: 0 6px 0 #f2c6cf; }
+  .btn-kitly:hover { transform: translateY(2px); box-shadow-color: none; color: white; }
+  .btn-white:hover { color: #6d1c29; }
 
-      try {
-        var raw = localStorage.getItem('om:theme');
-        // Mirror useTheme's default: usehooks-ts doesn't persist 'system'
-        // until the toggle is used, so absent = 'system'.
-        var pref = raw ? JSON.parse(raw) : 'system';
-        var dark =
-          pref === 'dark' ||
-          (pref === 'system' &&
-            matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-        // Pre-CSS canvas color: until tokens.css loads, the UA paints the
-        // default white canvas, which flashes on a dark hard-reload. Inline
-        // values mirror tokens.css --om-bg-app; useTheme clears this once
-        // the app mounts so the stylesheet owns the background again.
-        document.documentElement.style.background = dark
-          ? '#1c1b19'
-          : '#faf9f5';
-      } catch (e) {
-        document.documentElement.dataset.theme = 'light';
-        document.documentElement.style.background = '#faf9f5';
-      }
-    </script>
-    <script type="module" crossorigin src="https://assets-proxy.anthropic.com/design/v2/assets/v1/index-bL_3QZlC.js"></script>
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/rolldown-runtime-CMxvf4Kt.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/preload-helper-kNaey6uv.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/react-BthIFXYf.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/dist-DOmVupLo.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/client-lite-nD8JXjHB.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/connect-lite-vzd2EiZc.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/gate-CmDAYU5o.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/backoff-BHgnPlwy.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/persisted-store-B36OabhT.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useOrg-DQCUv8Oz.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/stock-photo-mode-GBt0O2U-.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/cn-pTfnJT_M.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/jsx-runtime-DDrWIXeu.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/trigger-context-BqBikWHS.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/react-dom-B3-jr42p.js">
-    <link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/ReactStore-B5RcVO3K.js">
-    <link rel="stylesheet" crossorigin href="https://assets-proxy.anthropic.com/design/v2/assets/v1/index-BoXjyFTN.css">
-    <meta name="x-build-id" content="ecf48ebd72634c1b85a72e03b86f777ca8af3cef">
-  <link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/AttachCodebaseModal-DIdYr1Wi.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/AttachmentChips-BYBq1oHW.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/Dialog-DQq0inwG.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/ExportProgressBar-BmE7d_aj.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/FigFileModal-Cj3KetEP.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/FormList-D3Y4Q0HM.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/HistoryPanel-BCMuj-nQ.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/Kbd-CpsDmVh2.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/LazySurface-D6xUG_8t.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/LimitUpsellOptionCard-B7lHiCOT.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/MetaText-DiOgD7BI.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/ModalHeader-C-YHSltq.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/Popover-CdAef3A7.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/ProjectPage-CU92y0bC.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/RadioGroup-Cl2QuJR4.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/Tooltip-B4KpDnaH.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/Tooltip-BMVuCBso.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/api-1rWghFwg.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/browser-BV-Pd9QF.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/client-BQU6gM3J.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/client-event-bus-CUOhmLFi.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/components-CRpjjCeV.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/composite-CEyJ_l2r.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/date-BWSQhJDa.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/desktop-auth-wait-U22GFHpu.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/ds-self-check-DsVLYO8Z.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/errMsg-CeGMLWmo.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/events-CTzgqUMH.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/externalLink-dqG7Ky9w.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/files-switcher-model-Co2kGxbB.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/fonts-BXtYzGak.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/hash-BYHBVq6L.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/host-BwlQdwMG.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/link-url-DU13lBmb.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/media-D9KTu5_P.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/path-4EdI4_uJ.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/presenterChannel-CIItyV0C.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/previewIngress-EQuT5Kkj.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/project-client-Dqzy-OR1.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/questions-hybrid-Bc9lJBMl.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/questions-v3-ask-CrbyFDkz.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/selection-BmT838gu.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/shared-D2Kdveil.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/slashSuggestion-C3tJkYba.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/sourcePersistence-DA7Wsf4y.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/spark-jUbBIXWZ.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/template-build-state-CGdKsUY6.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useAnchoredPopupScrollLock-Bap4Jml-.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useAriaLabelledBy-DPwinCxP.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useCanvasExport-Ccedcl_z.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useEverTrue-Cf0GQz0v.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useFigmaStatus-Cggx_xqg.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useGithubStatus-D4QszOSA.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useModelSelection-CN14RtAC.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useOnboardingSimpleFlow-CDZ0FsUC.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useOrgProjects-Db3dLvs6.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/usePositioner-vdz4J8Ju.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useProjectDesignSystems-D4ig7dmB.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useQuery-CLYbCBeK.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/useUserSettings-r3TJ6x5B.js"><link rel="modulepreload" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/viewer-handle-L07mAINz.js"><link rel="preload" as="style" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/FormList-DPI5FmbR.css"><link rel="preload" as="style" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/ProjectPage-D36IL5mP.css"><link rel="preload" as="style" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/components-BMAjw28g.css"><link rel="preload" as="style" crossorigin fetchpriority="low" href="https://assets-proxy.anthropic.com/design/v2/assets/v1/template-build-state-CZmMb9kD.css"></head>
-  <body>
-    </html>
+  .kitly-hero { text-align: center; margin-top: 70px; }
+  .kitly-badge { display: inline-block; background: white; color: #d94a5e; font-weight: 700; font-size: 17px; padding: 10px 26px; border-radius: 999px; box-shadow: 0 5px 0 #f2c6cf; }
+  .kitly-hero h1 { font-size: clamp(48px, 8vw, 96px); font-weight: 800; color: #6d1c29; margin: 28px 0 20px; line-height: 1.05; }
+  .kitly-hero p {
+    font-size: 21px;
+    line-height: 1.6;        /* ← space between the two lines: try 1.3 (tight) to 2 (airy) */
+    margin: 24px auto 0;     /* ← first number = top margin, keeps space above the text */
+    color: #6d1c29;
+    font-weight: 600;
+    max-width: 52ch;
+  }
+  .kitly-cta-row { display: flex; gap: 18px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
+  .kitly-chips { display: flex; gap: 16px; justify-content: center; margin-top: 56px; flex-wrap: wrap; }
+  .kitly-chip { background: white; color: #6d1c29; font-weight: 700; font-size: 17px; padding: 12px 28px; border-radius: 999px; box-shadow: 0 5px 0 #f2c6cf; }
+</style>
+
+<div class="kitly-home">
+
+  <div class="kitly-hero">
+    <h1>Make a UI kit the fun way.</h1>
+    <span class="kitly-badge">Let's start it!</span>
+    <p>Pick a theme, drop in the components you want, then tell Kitly what to change in your own words. It stays pretty; you stay in charge.</p>
+
+
+    <div class="kitly-chips">
+      <span class="kitly-chip">Christmas</span>
+      <span class="kitly-chip">Business</span>
+      <span class="kitly-chip">Bakery</span>
+      <span class="kitly-chip">Fintech</span>
+      <span class="kitly-chip">Kids app</span>
+      <span class="kitly-chip">Wedding</span>
+    </div>
+  </div>
+</div>
+<head>
