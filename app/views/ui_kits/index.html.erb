@@ -1,0 +1,13 @@
+<div class="kitly-home">
+  <h1>My UI kits</h1>
+
+  <% if @ui_kits.any? %>
+    <ul>
+      <% @ui_kits.each do |kit| %>
+        <li><%= link_to kit.name, ui_kit_path(kit) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No kits yet — time to make your first one!</p>
+  <% end %>
+</div>
