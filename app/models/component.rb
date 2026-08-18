@@ -1,6 +1,6 @@
 class Component < ApplicationRecord
   belongs_to :ui_kit
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates :category, presence: true
   validates :html_code, presence: true
