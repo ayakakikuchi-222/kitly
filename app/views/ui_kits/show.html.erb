@@ -1,13 +1,47 @@
 <div class="container my-5">
   <h2>Dashboard Pro Preview</h2>
+
   <% @ui_kit.components.each do |ui_kit| %>
   <div class="component_card bg-white p-5 mt-5">
-    <span class="btn btn-primary p-1"><%= ui_kit.category %></span>
+    <span class="">Category: <%= ui_kit.category %></span>
 
-    <div class="d-flex bg-white border rounded">
-      <div class="bg-light w-50"><%= ui_kit.html_code %></div>
-      <div class="bg-light w-50"><%= ui_kit.css_code %></div>
+    <div class="box-preview-codes d-flex">
+      <div class="preview w-50 d-flex justify-content-center align-items-center">
+        <style><%= ui_kit.css_code %></style>
+        <% if ui_kit.html_code.present? %>
+          <%= ui_kit.html_code.html_safe %>
+        <% end %>
+      </div>
+
+      <div class="codes w-50">
+        <div class = "card m-3 p-3">
+          <ul class="nav tabs-underlined" id="myTab" role="tablist">
+
+            <li class="nav-item" role="presentation">
+              <span class="nav-link tab-underlined active" id="html-tab" data-bs-toggle="tab" data-bs-target="#html-tab-pane-<%= ui_kit.id %>" role="tab" aria-controls="html-tab-pane-<%= ui_kit.id %>" aria-selected="true">HTML</span>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <span class="nav-link tab-underlined" id="css-tab" data-bs-toggle="tab" data-bs-target="#css-tab-pane-<%= ui_kit.id %>" role="tab" aria-controls="css-tab-pane-<%= ui_kit.id %>" aria-selected="false">CSS</span>
+            </li>
+          </ul>
+
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade py-3 show active" id="html-tab-pane-<%= ui_kit.id %>" role="tabpanel" aria-labelledby="html-tab" tabindex="0">
+            <code>
+              <pre><%= ui_kit.html_code %></pre>
+            </code>
+          </div>
+          <div class="tab-pane fade py-3" id="css-tab-pane-<%= ui_kit.id %>" role="tabpanel" aria-labelledby="css-tab" tabindex="0">
+            <code>
+              <pre><%= ui_kit.css_code %></pre>
+            </code>
+          </div>
+        </div>
+      </div>
+      </div>
+
     </div>
-    </div>
+  </div>
   <% end %>
 </div>
