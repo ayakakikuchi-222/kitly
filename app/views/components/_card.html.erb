@@ -1,5 +1,8 @@
 <div class="component_card bg-white p-5 mt-5">
-  <span class="">Category: <%= component.category %></span>
+  <div class="d-flex justify-content-between">
+    <span class="">Category: <%= component.category %></span>
+    <%= link_to "Edit", component_path(component), class: "btn btn-outline-secondary btn-sm ms-2" %>
+  </div>
   <div class="box-preview-codes d-flex">
     <div class="preview w-50 d-flex justify-content-center align-items-center">
       <style>
