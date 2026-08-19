@@ -1,0 +1,122 @@
+.ui-kits-index {
+  font-family: 'Baloo 2', sans-serif;
+
+  /* full-width cyan section (overrides Bootstrap's .container narrowing) */
+  &.container {
+    max-width: 100%;
+    background: #d6ecf0;
+    min-height: 100vh;
+    padding: 40px 5vw 80px;
+  }
+
+  h1 {
+    color: #6d1c29;
+    font-weight: 800;
+  }
+
+  /* kit cards */
+.card {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 6px 0 #f2c6cf;
+    min-height: 200px;          /* ← add this */
+    transition: transform 0.15s;
+
+    &:hover { transform: translateY(-3px); }
+  }
+
+  .card-title a {
+    color: #6d1c29;
+    font-weight: 800;
+    text-decoration: none;
+
+    &:hover { color: #d94a5e; }
+  }
+
+  .card-text {
+    color: #6d1c29;
+    font-weight: 600;
+  }
+
+  /* the "+ New Kit" tile */
+  button[data-bs-target="#newUiKitPanel"] {
+    background: white;
+    border: 3px dashed #f2c6cf !important;
+    border-radius: 20px !important;
+    color: #d94a5e;
+    font-family: inherit;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+
+    &:hover { border-color: #d94a5e !important; background: #fdf1f3; }
+
+    .fs-1 { color: #d94a5e; }
+  }
+
+  /* delete ✕ on each card */
+  .btn-icon-delete {
+    color: #e8aab5;
+    border: none;
+    background: transparent;
+
+    &:hover { color: #d94a5e; }
+  }
+  .kit-example {
+    max-width: 200px;
+
+    p {
+      color: #6d1c29;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 6px 0 #f2c6cf;
+    }
+  }
+}
+
+/* the slide-in panel */
+#newUiKitPanel {
+  font-family: 'Baloo 2', sans-serif;
+  background: #d6ecf0;
+
+  .offcanvas-title, h5, label {
+    color: #6d1c29;
+    font-weight: 700;
+  }
+
+  input[type="text"],
+  textarea {
+    border: 2px solid #f2c6cf;
+    border-radius: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    color: #6d1c29;
+
+    &:focus {
+      outline: none;
+      border-color: #d94a5e;
+      box-shadow: 0 0 0 3px rgba(217, 74, 94, 0.15);
+    }
+  }
+
+  input[type="submit"],
+  button[type="submit"] {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 28px;
+    font-family: inherit;
+    font-weight: 700;
+    background: #6d1c29;
+    color: white;
+    box-shadow: 0 4px 0 #4a1119;
+
+    &:hover { transform: translateY(2px); box-shadow: 0 2px 0 #4a1119; }
+  }
+}
