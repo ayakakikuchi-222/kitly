@@ -1,0 +1,37 @@
+<div class="component_card bg-white p-5 mt-5">
+  <span class="">Category: <%= component.category %></span>
+  <div class="box-preview-codes d-flex">
+    <div class="preview w-50 d-flex justify-content-center align-items-center">
+      <style>
+        <%= component.css_code %>
+      </style>
+      <% if component.html_code.present? %>
+        <%= component.html_code.html_safe %>
+      <% end %>
+    </div>
+    <div class="codes w-50">
+      <div class = "card m-3 p-3">
+        <ul class="nav tabs-underlined" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <span class="nav-link tab-underlined active" id="html-tab" data-bs-toggle="tab" data-bs-target="#html-tab-pane-<%= component.id %>" role="tab" aria-controls="html-tab-pane-<%= component.id %>" aria-selected="true">HTML</span>
+          </li>
+          <li class="nav-item" role="presentation">
+            <span class="nav-link tab-underlined" id="css-tab" data-bs-toggle="tab" data-bs-target="#css-tab-pane-<%= component.id %>" role="tab" aria-controls="css-tab-pane-<%= component.id %>" aria-selected="false">CSS</span>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade py-3 show active" id="html-tab-pane-<%= component.id %>" role="tabpanel" aria-labelledby="html-tab" tabindex="0">
+            <code>
+              <pre><%= component.html_code %></pre>
+            </code>
+          </div>
+          <div class="tab-pane fade py-3" id="css-tab-pane-<%= component.id %>" role="tabpanel" aria-labelledby="css-tab" tabindex="0">
+            <code>
+              <pre><%= component.css_code %></pre>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
