@@ -1,6 +1,5 @@
 <div class="ui-kits-index container">
   <h1 class="mb-4">My UI Kits</h1>
-
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <button type="button"
@@ -12,7 +11,6 @@
         <span>New Kit</span>
       </button>
     </div>
-
     <% @ui_kits.each do |ui_kit| %>
       <div class="col">
         <div class="card h-100">
@@ -43,7 +41,6 @@
       <%= image_tag "placeholder.png", alt: "Example UI kit — Corporate theme" %>
     </div>
   <% end %>
-
   <div class="offcanvas offcanvas-end" tabindex="-1" id="newUiKitPanel" aria-labelledby="newUiKitPanelLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="newUiKitPanelLabel">New UI Kit</h5>
