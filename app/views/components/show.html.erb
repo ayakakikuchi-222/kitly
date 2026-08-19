@@ -1,6 +1,17 @@
-<div class="container">
-  <h1>Hello from show of component</h1>
-  <p><%= @component.category %></p>
-  <%= @component.html_code %>
-  <p><%= @component.css_code %></p>
+<div class="container d-flex my-5">
+  <div>
+    <p><%= @component.category %></p>
+    <%= @component.html_code %>
+    <p><%= @component.css_code %></p>
+  </div>
+  <div class="message-box p-4 rounded">
+    <p class="pb-3 border-bottom">Kitly Copilot</p>
+    <% @component.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+    <%= simple_form_for [@component, @message] do |f| %>
+      <%= f.input :content, label: false, placeholder: "Let's create awesome components!" %>
+      <%= f.submit "Create", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
