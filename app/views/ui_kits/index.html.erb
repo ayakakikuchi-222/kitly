@@ -1,9 +1,6 @@
 <div class="kitly-home">
   <h1>My UI Kits</h1>
 
-  <%= link_to "New UI Kit", new_ui_kit_path %>
-
-
   <% if @ui_kits.any? %>
     <ul>
       <% @ui_kits.each do |ui_kit| %>
