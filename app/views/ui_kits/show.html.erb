@@ -1,13 +1,6 @@
 <div class="container my-5">
   <h2>Dashboard Pro Preview</h2>
-  <% @ui_kit.components.each do |ui_kit| %>
-  <div class="component_card bg-white p-5 mt-5">
-    <span class="btn btn-primary p-1"><%= ui_kit.category %></span>
-
-    <div class="d-flex bg-white border rounded">
-      <div class="bg-light w-50"><%= ui_kit.html_code %></div>
-      <div class="bg-light w-50"><%= ui_kit.css_code %></div>
-    </div>
-    </div>
+  <% @ui_kit.components.each do |component| %>
+    <%= render "components/card", component: component %>
   <% end %>
 </div>

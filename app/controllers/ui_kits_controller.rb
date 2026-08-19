@@ -6,6 +6,7 @@ class UiKitsController < ApplicationController
 
   def index
     @ui_kits = current_user.ui_kits.order(created_at: :desc)
+    @ui_kit = current_user.ui_kits.new
   end
 
   def create

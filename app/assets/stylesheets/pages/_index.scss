@@ -1,2 +1,26 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.btn-icon-delete {
+  background: none;
+  border: none;
+  padding: 0.25rem 0.4rem;
+  line-height: 1;
+  color: #6c757d;
+
+  .icon-trash {
+    display: none;
+  }
+
+  &:hover {
+    color: #dc3545;
+
+    .icon-x {
+      display: none;
+    }
+
+    .icon-trash {
+      display: inline;
+    }
+  }
+}
