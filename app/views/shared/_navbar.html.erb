@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to ui_kits_path, class: "navbar-brand" do %>
       <%= image_tag "kitly-logo.png" %>
     <% end %>
 
@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", ui_kits_path, class: "nav-link" %>
           </li>
 
           <%# CHANGED: nickname now has a badge next to it %>

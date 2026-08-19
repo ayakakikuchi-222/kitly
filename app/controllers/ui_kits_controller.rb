@@ -8,10 +8,6 @@ class UiKitsController < ApplicationController
     @ui_kits = current_user.ui_kits.order(created_at: :desc)
   end
 
-  def new
-    @ui_kit = current_user.ui_kits.new
-  end
-
   def create
     @ui_kit = current_user.ui_kits.new(ui_kit_params)
 
