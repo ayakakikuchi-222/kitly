@@ -3,7 +3,7 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <button type="button"
-              class="btn border rounded d-flex flex-column align-items-center justify-content-center w-100 h-100 py-5"
+              class="btn border rounded d-flex flex-column align-items-center justify-content-center w-100 h-100"
               data-bs-toggle="offcanvas"
               data-bs-target="#newUiKitPanel"
               aria-controls="newUiKitPanel">
@@ -21,6 +21,11 @@
             <i class="fa-solid fa-xmark icon-x"></i>
             <i class="fa-solid fa-trash icon-trash"></i>
           <% end %>
+
+          <% if (img = ui_kit_image(ui_kit)) %>
+            <%= image_tag img, class: "card-img-top kit-thumb", alt: ui_kit.name %>
+          <% end %>
+
           <div class="card-body d-flex flex-column">
             <h5 class="card-title"><%= link_to ui_kit.name, ui_kit_path(ui_kit) %></h5>
             <p class="card-text text-truncate"><%= ui_kit.description %></p>
@@ -29,8 +34,12 @@
       </div>
     <% end %>
   </div>
-  <% if @ui_kits.empty? %>
-    <p class="mt-4">No kits yet — time to make your first one!</p>
+
+<% if @ui_kits.empty? %>
+    <div class="kit-example mt-4">
+      <p>No kits yet — here's what a Kitly kit looks like. Time to make your first one!</p>
+      <%= image_tag "placeholder.png", alt: "Example UI kit — Corporate theme" %>
+    </div>
   <% end %>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="newUiKitPanel" aria-labelledby="newUiKitPanelLabel">
     <div class="offcanvas-header">

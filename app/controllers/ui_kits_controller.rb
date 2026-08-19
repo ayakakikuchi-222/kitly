@@ -5,7 +5,7 @@ class UiKitsController < ApplicationController
   end
 
   def index
-    @ui_kits = current_user.ui_kits.order(created_at: :desc)
+    @ui_kits = current_user.ui_kits.order(:created_at)
     @ui_kit = current_user.ui_kits.new
   end
 
@@ -15,7 +15,7 @@ class UiKitsController < ApplicationController
     if @ui_kit.save
       redirect_to ui_kits_path, notice: "UI Kit was successfully created!"
     else
-      render :new, status: :unprocessable_entity
+      redirect_to ui_kits_path, alert: @ui_kit.errors.full_messages.to_sentence
     end
   end
 
