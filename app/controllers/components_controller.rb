@@ -3,6 +3,8 @@ class ComponentsController < ApplicationController
 
   before_action :set_component, only: %i[show update destroy]
   def show
+    @component = Component.find(params[:id])
+    @message = Message.new
   end
 
   def update

@@ -1,3 +1,18 @@
+<div class="container d-flex my-5">
+  <div>
+    <p><%= @component.category %></p>
+    <%= @component.html_code %>
+    <p><%= @component.css_code %></p>
+  </div>
+  <div class="message-box p-4 rounded">
+    <p class="pb-3 border-bottom">Kitly Copilot</p>
+    <% @component.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+    <%= simple_form_for [@component, @message] do |f| %>
+      <%= f.input :content, label: false, placeholder: "Let's create awesome components!" %>
+      <%= f.submit "Create", class: "btn btn-primary" %>
+    <% end %>
 <div class="component-show-layout d-flex gap-4">
   <div class="component-main flex-grow-1">
     <%= link_to "← Back to UI Kit", ui_kit_path(@component.ui_kit) %>

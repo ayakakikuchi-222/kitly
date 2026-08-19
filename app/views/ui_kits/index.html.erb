@@ -1,6 +1,5 @@
 <div class="ui-kits-index container">
   <h1 class="mb-4">My UI Kits</h1>
-
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <button type="button"
@@ -12,7 +11,6 @@
         <span>New Kit</span>
       </button>
     </div>
-
     <% @ui_kits.each do |ui_kit| %>
       <div class="col">
         <div class="card h-100">
@@ -23,7 +21,6 @@
             <i class="fa-solid fa-xmark icon-x"></i>
             <i class="fa-solid fa-trash icon-trash"></i>
           <% end %>
-
           <div class="card-body d-flex flex-column">
             <h5 class="card-title"><%= link_to ui_kit.name, ui_kit_path(ui_kit) %></h5>
             <p class="card-text text-truncate"><%= ui_kit.description %></p>
@@ -32,11 +29,9 @@
       </div>
     <% end %>
   </div>
-
   <% if @ui_kits.empty? %>
     <p class="mt-4">No kits yet — time to make your first one!</p>
   <% end %>
-
   <div class="offcanvas offcanvas-end" tabindex="-1" id="newUiKitPanel" aria-labelledby="newUiKitPanelLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="newUiKitPanelLabel">New UI Kit</h5>
