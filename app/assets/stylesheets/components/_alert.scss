@@ -1,6 +1,59 @@
 .alert {
+  /* keep any existing position/bottom/right/z-index lines here */
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  box-shadow: 0 5px 0 #f2c6cf;
+}
+
+.alert-info {
+  background: white;
+  color: #6d1c29;
+}
+
+.alert-warning {
+  background: #fdf1f3;
+  color: #d94a5e;
+}
+
+.alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1050;
+  max-width: 420px;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  background: #fbe4e8;           /* ← the soft pink from screenshot 2 */
+  color: #d94a5e;                /* cherry text, as in that banner */
+  box-shadow: 0 5px 0 #f2c6cf;
+}
+
+.alert.alert-dismissible {
+  padding-right: 56px;
+}
+
+.alert .btn-close {
+  top: 50%;
+  transform: translateY(-50%);   /* vertically centers the ✕ in the pill */
+  right: 20px;
+}
+
+.alert .btn-close {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  width: 5px;      /* ← the dial; default is ~16px */
+  height: 5px;
+}
+
+.navbar-lewagon {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  /* ...your existing lines stay... */
 }
