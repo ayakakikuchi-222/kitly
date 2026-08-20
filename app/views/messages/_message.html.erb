@@ -8,7 +8,7 @@
 <% elsif message.role == "assistant" %>
   <div class="d-flex justify-content-start mb-5">
     <div class="chat assistant-text">
-      <!--%= raw(render_markdown(message.content)) %-->
+      <%= message.content %>
     </div>
   </div>
 <% end %>

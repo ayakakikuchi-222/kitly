@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :ui_kits, only: [:index, :create, :show, :destroy] do
     resources :components, only: [:create]
+    resources :messages, only: [ :create ]
   end
   resources :components, only: [:show, :update, :destroy ] do
     resources :messages, only: [ :create ]

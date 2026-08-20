@@ -1,6 +1,30 @@
 <div class="container my-5">
-  <h2>Dashboard Pro Preview</h2>
-  <% @ui_kit.components.each do |component| %>
-    <%= render "components/card", component: component %>
-  <% end %>
+  <h2><%= @ui_kit.name %></h2>
+
+  <div class="d-flex gap-4">
+    <div class="components-list flex-grow-1">
+      <% @ui_kit.components.each do |component| %>
+        <%= render "components/card", component: component %>
+      <% end %>
+    </div>
+
+    <div class="message-box p-4 rounded">
+      <p class="pb-3 border-bottom">Kitly Copilot</p>
+      <% @ui_kit.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+      <%= simple_form_for [@ui_kit, @message] do |f| %>
+        <div class="d-flex">
+          <%= f.input :content,
+                label: false,
+                placeholder: "Describe the component you'd like to create...",
+                class: "flex-grow-1 w-100",
+                input_html: { class: "message-textarea" } %>
+          <%= button_tag type: "submit", class: "btn btn-primary rounded-circle submit-btn" do %>
+            <i class="fa-solid fa-arrow-up-long"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
