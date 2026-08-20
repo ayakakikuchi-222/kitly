@@ -11,6 +11,8 @@
         <span>New Kit</span>
       </button>
     </div>
+
+
     <% @ui_kits.each do |ui_kit| %>
       <div class="col">
         <div class="card h-100">
@@ -35,12 +37,6 @@
     <% end %>
   </div>
 
-<% if @ui_kits.empty? %>
-    <div class="kit-example mt-4">
-      <p>No kits yet — here's what a Kitly kit looks like. Time to make your first one!</p>
-      <%= image_tag "placeholder.png", alt: "Example UI kit — Corporate theme" %>
-    </div>
-  <% end %>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="newUiKitPanel" aria-labelledby="newUiKitPanelLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="newUiKitPanelLabel">New UI Kit</h5>
