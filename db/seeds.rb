@@ -67,3 +67,13 @@ ui_kit: ui_kit_1
 )
 component_3.save
 puts 'Finished!'
+
+# Example kit for any user who doesn't have one yet
+User.find_each do |user|
+  next if user.ui_kits.exists?(name: "Corporate (example)")
+  user.ui_kits.create!(
+    name: "Corporate (example)",
+    description: "This is what a Kitly kit looks like — make your first one!",
+    image_url: "placeholder.png"
+  )
+end
