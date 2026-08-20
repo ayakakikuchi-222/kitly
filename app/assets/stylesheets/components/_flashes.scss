@@ -1,0 +1,23 @@
+.alert {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;               /* full pill — matches your badge/buttons */
+  padding: 14px 28px;
+  box-shadow: 0 5px 0 #f2c6cf;
+       /* the signature pink drop */
+}
+
+.alert-info,
+.alert-success,
+.alert-notice {
+  background: white;
+  color: #6d1c29;
+}
+
+.alert-warning,
+.alert-danger,
+.alert-alert {
+  background: #fdf1f3;
+  color: #d94a5e;
+}
