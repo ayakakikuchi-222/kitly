@@ -3,13 +3,13 @@ class ComponentsController < ApplicationController
 
   before_action :set_component, only: %i[show update destroy]
   def show
-    @component = Component.find(params[:id])
+    # @component = Component.find(params[:id])
     @message = Message.new
   end
 
   def update
     if @component.update(component_params)
-      redirect_to component_path(@component), notice: "Component was successfully updated."
+      redirect_to component_path(@component) # , notice: "Component was successfully updated."
     else
       render :show, status: :unprocessable_entity
     end
