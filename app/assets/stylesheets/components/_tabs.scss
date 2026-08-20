@@ -21,3 +21,12 @@
     border-bottom: 3px solid #555555;
   }
 }
+
+.components-list {
+  min-width: 0;
+}
+
+.codes pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
