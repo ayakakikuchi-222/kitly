@@ -1,0 +1,15 @@
+<%= simple_form_for [component, message], data: { controller: "message-form" } do |f| %>
+  <div class="d-flex">
+    <%= f.input :content,
+      label: false,
+      placeholder: "Let's create awesome components!",
+      class: "flex-grow-1 w-100",
+      input_html: {
+        class: "message-textarea",
+        data: { action: "keydown->message-form#submitOnEnter" }
+      } %>
+    <%= button_tag type: "submit", class: "btn btn-primary rounded-circle submit-btn" do %>
+      <i class="fa-solid fa-arrow-up-long"></i>
+    <% end %>
+  </div>
+<% end %>

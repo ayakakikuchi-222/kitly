@@ -1,0 +1,10 @@
+<%# update, remove, append %>
+<%= turbo_stream.append "messages" do %>
+  <%= render "messages/message", message: @message %>
+<% end %>
+<%= turbo_stream.replace "card" do %>
+  <%= render "components/card", component: @component %>
+<% end %>
+<%= turbo_stream.update "new_message" do %>
+  <%= render "messages/form", component: @component, message: Message.new %>
+<% end %>

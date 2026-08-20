@@ -4,6 +4,8 @@ class ComponentsController < ApplicationController
   before_action :set_component, only: %i[show update destroy]
   def show
     # @component = Component.find(params[:id])
+    @component = current_user.components.find(params[:id])
+    # @challenge = @chat.challenge
     @message = Message.new
   end
 
