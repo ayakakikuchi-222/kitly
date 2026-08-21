@@ -12,11 +12,12 @@ class UiKitsController < ApplicationController
   end
 
   def create
-    @ui_kit = current_user.ui_kits.new(ui_kit_params)
+    @ui_kit = current_user.ui_kits.new
+    ask_llm_to_set_ui_kit_details(params[:theme_prompt])
 
     if @ui_kit.save
       ask_llm_to_create_component
-      redirect_to ui_kits_path, notice: "UI Kit was successfully created!"
+      redirect_to ui_kit_path(@ui_kit), notice: "UI Kit was successfully created!"
     else
       redirect_to ui_kits_path, alert: @ui_kit.errors.full_messages.to_sentence
     end
@@ -33,8 +34,24 @@ class UiKitsController < ApplicationController
     @ui_kit = current_user.ui_kits.find(params[:id])
   end
 
-  def ui_kit_params
-    params.require(:ui_kit).permit(:name, :description)
+  def ask_llm_to_set_ui_kit_details(theme_prompt)
+    ruby_llm_chat = RubyLLM.chat(model: "gpt-4.1-mini")
+    ruby_llm_chat.with_tool(SetUiKitDetailsTool.new(ui_kit: @ui_kit))
+    ruby_llm_chat.with_instructions(set_ui_kit_details_instructions)
+
+    ruby_llm_chat.ask(theme_prompt)
+  end
+
+  def set_ui_kit_details_instructions
+    <<~PROMPT
+      You are Kitly Copilot, helping a user set up a new UI Kit. The user will describe, in
+      their own words, what kind of website they're creating.
+
+      Call the set_ui_kit_details tool exactly once with:
+      - name: a short, catchy name for the UI kit (a few words).
+      - description: a one-to-two sentence description of the kit's visual theme and purpose,
+        written so it can guide another designer building components for it.
+    PROMPT
   end
 
   def ask_llm_to_create_component
