@@ -25,14 +25,20 @@
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade py-3 show active" id="html-tab-pane-<%= component.id %>" role="tabpanel" aria-labelledby="html-tab" tabindex="0">
+          <div class="tab-pane fade py-3 show active" id="html-tab-pane-<%= component.id %>" role="tabpanel" aria-labelledby="html-tab" tabindex="0" data-controller="clipboard">
+            <button type="button" class="copy-btn" data-action="click->clipboard#copy" title="Copy HTML">
+              <i class="fa-solid fa-copy"></i>
+            </button>
             <code>
-              <pre><%= component.html_code %></pre>
+              <pre data-clipboard-target="source"><%= component.html_code %></pre>
             </code>
           </div>
-          <div class="tab-pane fade py-3" id="css-tab-pane-<%= component.id %>" role="tabpanel" aria-labelledby="css-tab" tabindex="0">
+          <div class="tab-pane fade py-3" id="css-tab-pane-<%= component.id %>" role="tabpanel" aria-labelledby="css-tab" tabindex="0" data-controller="clipboard">
+            <button type="button" class="copy-btn" data-action="click->clipboard#copy" title="Copy CSS">
+              <i class="fa-solid fa-copy"></i>
+            </button>
             <code>
-              <pre><%= component.css_code %></pre>
+              <pre data-clipboard-target="source"><%= component.css_code %></pre>
             </code>
           </div>
         </div>
