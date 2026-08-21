@@ -21,6 +21,12 @@ class UpdateComponentTool < RubyLLM::Tool
 
   def execute(html_code:, css_code:, component_id:)
     component = Component.find(component_id)
+    puts
+    puts
+    puts "HTML is the exact same: #{component.html_code == html_code}"
+    puts "CSS is the exact same: #{component.css_code == css_code}"
+    puts
+    puts
     if component.update(html_code: html_code, css_code: css_code)
       { success: true, component_id: component.id }
     else
