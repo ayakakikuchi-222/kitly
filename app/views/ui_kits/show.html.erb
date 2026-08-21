@@ -1,10 +1,24 @@
 <%= render "shared/breadcrumbs", ui_kit: @ui_kit, current_page: "ui_kit" %>
 <div class="container my-5">
-  <h2><%= @ui_kit.name %></h2>
+
+  <% if @components_by_category.any? %>
+    <div class="kit-anchor-nav">
+      <% @components_by_category.keys.each do |category| %>
+        <a href="#category-<%= (category.presence || "other").parameterize %>">
+          <%= (category.presence || "Other").capitalize %>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="d-flex gap-4">
     <div class="components-list flex-grow-1">
-      <% @ui_kit.components.each do |component| %>
-        <%= render "components/card", component: component %>
+      <% @components_by_category.each do |category, components| %>
+        <section id="category-<%= (category.presence || "other").parameterize %>" class="kit-category-section">
+          <% components.each do |component| %>
+            <%= render "components/card", component: component %>
+          <% end %>
+        </section>
       <% end %>
     </div>
     <div data-controller="toggle" id="add-component-button">
