@@ -1,0 +1,21 @@
+<div class="container pt-4">
+  <ul class="breadcrumbs d-flex gap-3">
+    <li>
+      <%= link_to ui_kits_path do %>
+        <i class="fa-solid fa-house"></i>
+      <% end %>
+    </li>
+    <% if current_page == "ui_kit" %>
+      <li>
+        <%= ui_kit.name %>
+      </li>
+    <% elsif current_page == "component" %>
+      <li>
+        <%= link_to ui_kit.name, ui_kit_path(ui_kit) %>
+      </li>
+      <li>
+        <%= component.category %>
+      </li>
+    <% end %>
+  </ul>
+</div>

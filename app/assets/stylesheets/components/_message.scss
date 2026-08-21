@@ -30,3 +30,30 @@
 .chat.user-text p{
   margin-bottom: 0;
 }
+.message-box.d-none {
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.message-box {
+  opacity: 1;
+  min-width: 350px;
+}
+#add-component-button {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#add-component-button > button {
+  background-color: $kitly-pink;
+  border-color: $kitly-pink;
+  margin-left: auto;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#add-component-button .message-box {
+  width: 100%;
+}
