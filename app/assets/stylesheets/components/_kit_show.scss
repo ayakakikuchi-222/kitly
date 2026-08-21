@@ -61,3 +61,38 @@ body:has(.breadcrumb) {
   border-radius: 20px;
   box-shadow: 0 6px 0 #f2c6cf;
 }
+.component_card {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 40px;
+  right: 48px;
+  border: none;
+  background: white;
+  color: #6d1c29;
+  border-radius: 10px;
+  padding: 6px 10px;
+  box-shadow: 0 3px 0 #f2c6cf;
+  cursor: pointer;
+
+  &:hover { color: #d94a5e; }
+}
+.component_card .btn-outline-secondary {
+  border: none;
+  background: white;
+  color: #6d1c29;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 6px 14px;
+  box-shadow: 0 3px 0 #f2c6cf;
+
+  &:hover {
+    background: white;
+    color: #d94a5e;
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 #f2c6cf;
+  }
+}
