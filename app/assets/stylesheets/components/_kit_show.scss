@@ -1,0 +1,63 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.kit-anchor-nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0 28px;
+
+  a {
+    background: white;
+    color: #6d1c29;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 4px 0 #f2c6cf;
+
+    &:hover { color: #d94a5e; transform: translateY(1px); }
+  }
+}
+
+.kit-category-section {
+  scroll-margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.kit-category-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  color: #6d1c29;
+  margin-bottom: 16px;
+}
+
+/* cyan page background whenever the kit page renders */
+body:has(.kit-anchor-nav),
+body:has(.breadcrumbs),
+body:has(.breadcrumb) {
+  background: #d6ecf0;
+}
+
+/* brand the buttons and chat box */
+.components-list,
+#add-component-button {
+  font-family: 'Baloo 2', sans-serif;
+}
+
+#add-component-button .btn-primary,
+.submit-btn.btn-primary {
+  background: #d94a5e;
+  border-color: #d94a5e;
+  box-shadow: 0 4px 12px rgba(178, 53, 72, 0.4);
+
+  &:hover { background: #b23548; }
+}
+
+#add-component-button .message-box {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 0 #f2c6cf;
+}

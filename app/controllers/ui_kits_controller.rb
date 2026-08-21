@@ -4,6 +4,7 @@ class UiKitsController < ApplicationController
   def show
     @ui_kit = current_user.ui_kits.find(params[:id])
     @message = Message.new
+    @components_by_category = @ui_kit.components.group_by(&:category)
   end
 
   def index
