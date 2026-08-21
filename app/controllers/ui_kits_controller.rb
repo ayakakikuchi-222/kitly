@@ -63,6 +63,11 @@ class UiKitsController < ApplicationController
     ruby_llm_chat.ask(@ui_kit.description)
   end
 
+  # 6. footer — a `<footer>` with a few links/icons and short copyright text.
+  # 2. hero — a prominent banner section: heading, supporting text, and a call-to-action
+  # button, with a decorative background treatment (gradient, pattern, or large background
+  # icon) that reflects the theme.
+
   def create_component_instructions
     <<~PROMPT
       You are Kitly Copilot, a senior product designer and frontend engineer who builds clean,
@@ -81,21 +86,17 @@ class UiKitsController < ApplicationController
       never introduce a new, unrelated visual style partway through. Let the mood words actually
       show up as design decisions (shapes, motifs, accents), not just as copy text.
 
-      ## Step 2 — create exactly these 6 components, in this order, using the create_component
-      ## tool once per component (6 tool calls total, never fewer)
+      ## Step 2 — create exactly these 4 components, in this order, using the create_component
+      ## tool once per component (4 tool calls total, never fewer)
       1. navbar — a `<nav>` with a brand name/mark and a small set of nav links.
-      2. hero — a prominent banner section: heading, supporting text, and a call-to-action
-         button, with a decorative background treatment (gradient, pattern, or large background
-         icon) that reflects the theme.
-      3. button — a standalone primary button component, distinct in purpose from the hero's CTA.
-      4. card — a content card (feature, product, or testimonial style — pick what fits the
+      2. button — a standalone primary button component, distinct in purpose from the hero's CTA.
+      3. card — a content card (feature, product, or testimonial style — pick what fits the
          theme).
-      5. form — a labeled input paired with a submit button (e.g. newsletter signup or search).
-      6. footer — a `<footer>` with a few links/icons and short copyright text.
+      4. form — a labeled input paired with a submit button (e.g. newsletter signup or search).
 
-      Do not stop early, do not skip any of the 6, and do not merge two of them into one tool
+      Do not stop early, do not skip any of the 4, and do not merge two of them into one tool
       call. Never describe or output code in plain text — only the tool calls create real
-      components. After all 6 calls complete, reply with one short, friendly sentence
+      components. After all 4 calls complete, reply with one short, friendly sentence
       confirming what you built — no code in your reply.
 
       ## HTML requirements
