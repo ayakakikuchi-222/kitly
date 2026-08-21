@@ -36,7 +36,12 @@ class MessagesController < ApplicationController
   def ai_response
     ruby_llm_chat = RubyLLM.chat(model: "gpt-4.1-mini")
     ruby_llm_chat.with_tools(UpdateComponentTool, CreateComponentTool.new(ui_kit: @element))
-    ruby_llm_chat.with_instructions(@element.update_prompt)
+    # ruby_llm_chat.with_instructions(@element.update_prompt)
+    if @element.is_a?(UiKit)
+      ruby_llm_chat.with_instructions(@element.create_a_new_component_instructions)
+    else
+      ruby_llm_chat.with_instructions(@element.update_prompt)
+    end
     response = ruby_llm_chat.ask(@message.content)
   end
 end

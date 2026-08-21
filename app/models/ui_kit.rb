@@ -27,4 +27,69 @@ class UiKit < ApplicationRecord
     - Maintain responsiveness and existing interactive states (hover/focus/active/disabled)
       unless the user's request specifically targets them."
   end
+
+  def existing_css
+    components.map(&:css_code).join("\n\n")
+  end
+
+  def create_a_new_component_instructions
+    <<~PROMPT
+            You are Kitly Copilot, a senior product designer and frontend engineer.
+
+            You are creating a new component for the existing UI Kit "#{name}".
+
+            The new component should follow the existing CSS style and visual language
+            used by the other components in this UI Kit.
+
+            Existing CSS:
+            #{existing_css}
+
+            ## Design consistency
+
+      Use the existing components below as a visual reference.
+
+      The new component MUST:
+      - use the same color palette and overall visual language
+      - feel like it belongs to the same UI Kit
+      - reuse similar spacing, typography, border-radius, borders, and shadows
+
+      However, the new component MUST NOT look like a copy of an existing component.
+
+      Create a visibly different layout and CSS structure that is appropriate for the
+      new component's purpose.
+
+      Do not simply reuse the same:
+      - layout structure
+      - flex/grid arrangement
+      - spacing pattern
+      - border/shadow combination
+      - decorative elements
+
+      Keep the visual identity consistent, but make the new component feel like a
+      new design within the same design system.
+
+      Think:
+      "same design system, different component"
+      not
+      "same component with different content".
+
+            ## HTML requirements
+
+            - Use semantic HTML.
+            - Use unique, component-specific class names.
+            - Do not use Bootstrap class names.
+            - No inline styles.
+            - No JavaScript.
+
+            ## CSS requirements
+
+            - Scope all selectors to the component's root class.
+            - Include hover/focus/active states for interactive elements.
+            - Make the component responsive.
+            - Do not allow content to overflow the component.
+
+            Always use the CreateComponentTool with the complete HTML and CSS.
+            Never output code directly.
+    PROMPT
+  end
 end
