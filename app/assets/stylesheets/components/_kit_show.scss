@@ -67,8 +67,8 @@ body:has(.breadcrumb) {
 
 .copy-btn {
   position: absolute;
-  top: 40px;
-  right: 48px;
+  top: 46px;
+  right: 120px;
   border: none;
   background: white;
   color: #6d1c29;
@@ -76,7 +76,7 @@ body:has(.breadcrumb) {
   padding: 6px 10px;
   box-shadow: 0 3px 0 #f2c6cf;
   cursor: pointer;
-
+  i { vertical-align: middle; }
   &:hover { color: #d94a5e; }
 }
 .component_card .btn-outline-secondary {
@@ -95,4 +95,7 @@ body:has(.breadcrumb) {
     transform: translateY(1px);
     box-shadow: 0 2px 0 #f2c6cf;
   }
+}
+.component_card .card {
+  position: static;
 }
