@@ -73,7 +73,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "ruby_llm", "~> 1.2.0"
+gem "ruby_llm", "~> 2.0.0"
 gem "kramdown"
 gem "rouge"
 gem "kramdown-parser-gfm"
