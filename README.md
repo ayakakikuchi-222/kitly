@@ -10,7 +10,7 @@ Tell Kitly what you are building, for example, "a cozy bakery website with warm,
 
 ## Screenshots
 
-![Kitly dashboard](image-1.png)
+<img src="image-1.png" alt="Kitly dashboard" width="500">
 
 ## Features
 
