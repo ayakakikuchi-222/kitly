@@ -99,3 +99,308 @@ body:has(.breadcrumb) {
 .component_card .card {
   position: static;
 }
+// ---------- Mobile: kit page + component page ----------
+@media (max-width: 767.98px) {
+  // kit page: the + floats in the bottom-right corner, like a mobile app button,
+  // and Kitly Copilot opens just above it
+  #add-component-button {
+    position: fixed;
+    right: 16px;
+    bottom: 20px;
+    z-index: 1030;
+    height: auto;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  #add-component-button .message-box {
+    width: calc(100vw - 32px);
+    min-height: 320px; // room for 2-3 chat bubbles and the text box
+    max-height: 70vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0 !important;
+    box-shadow: 0 6px 0 #f2c6cf, 0 12px 32px rgba(0, 0, 0, 0.18); // extra shadow so it reads as floating
+
+    > p:first-child {
+      margin-bottom: auto; // title at the top, chat and text box at the bottom
+    }
+
+    form {
+      position: sticky; // the text box stays in view when there are many messages
+      bottom: 0;
+      background: #fff;
+      padding: 8px 0 16px;
+    }
+  }
+
+  // space at the bottom, so the + never covers the last component
+  .components-list {
+    padding-bottom: 88px;
+  }
+
+  // component page: the Copilot chat goes under the component
+  .container.d-flex:has(.component-show-layout) {
+    flex-direction: column;
+    gap: 24px !important;
+  }
+
+  // ----- Kitly Copilot chat look (kit page + component page) -----
+  .message-box {
+    min-width: 0;
+    width: 100%;
+    height: auto; // Safari squashed the panel to one line because of height: 100%
+    border-radius: 24px !important;
+    padding: 16px !important;
+
+    // "Kitly Copilot" title with a small magic-wand icon
+    > p:first-child {
+      font-weight: 800;
+      color: #6d1c29;
+      border-bottom-color: #f7e1e5 !important;
+
+      &::before {
+        content: "\e2ca";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: #d94a5e;
+        margin-right: 8px;
+      }
+    }
+
+    // chat bubbles with one small corner, like chat apps
+    .chat {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      line-height: 1.4;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .chat.user-text {
+      background: #b23548; // Kitly's darker pink, so white text is easy to read
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat.assistant-text {
+      background: #fdf1f3;
+      color: #6d1c29;
+      border-bottom-left-radius: 4px;
+    }
+
+    // the text box: a round pill with the send button inside
+    form > .d-flex {
+      align-items: flex-end;
+      gap: 8px;
+      background: #fdf1f3;
+      border-radius: 24px;
+      padding: 6px 6px 6px 16px;
+      transition: box-shadow 0.2s;
+
+      &:focus-within {
+        box-shadow: 0 0 0 3px rgba(217, 74, 94, 0.2);
+      }
+
+      > div {
+        flex: 1;
+        min-width: 0;
+        margin-bottom: 0 !important;
+      }
+    }
+
+    textarea {
+      min-height: 88px; // about 3 lines
+      padding: 8px 0;
+      border: 0;
+      background: transparent !important;
+      box-shadow: none !important;
+      resize: none;
+      color: #6d1c29;
+    }
+
+    .submit-btn {
+      flex-shrink: 0;
+    }
+  }
+
+  // less padding, so the component has room
+  .component_card {
+    padding: 20px !important;
+    margin-top: 24px !important;
+  }
+
+  // preview on top, code underneath
+  .box-preview-codes {
+    flex-direction: column;
+
+    .preview,
+    .codes {
+      width: 100% !important;
+    }
+
+    .preview {
+      padding: 24px 8px;
+      overflow-x: auto; // a wide component scrolls sideways inside its box, not the whole page
+    }
+
+    .preview > * {
+      max-width: 100%;
+    }
+  }
+
+  // the copy button sits in the corner of the code box
+  .component_card .codes .card {
+    position: relative;
+    margin: 8px 0 0 !important;
+  }
+
+  .copy-btn {
+    top: 12px;
+    right: 12px;
+  }
+
+  // long code scrolls inside its box, so the page doesn't get very long
+  .codes pre {
+    max-height: 260px;
+    overflow: auto;
+  }
+}
+
+// mobile preview: the component's background always covers all of its content
+@media (max-width: 767.98px) {
+  .box-preview-codes .preview {
+    justify-content: flex-start !important;
+  }
+
+  .box-preview-codes .preview > * {
+    min-width: min-content; // the box grows to fit everything that can't wrap
+    margin-left: auto; // centred, and a wide one starts at the left so you can scroll to see all of it
+    margin-right: auto;
+  }
+}
+// copy button: always on top and clickable, and shows "Copied!" after a click
+.copy-btn {
+  z-index: 2;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+
+  &.is-copied {
+    background: #d94a5e;
+    color: #fff;
+  }
+}
+
+// a component's own layers stay inside its preview, so they can't cover the copy button
+.box-preview-codes .preview {
+  isolation: isolate;
+}
+
+// desktop too: a wide component (like a long navbar) scrolls sideways inside its preview,
+// the same as on the phone, instead of spilling out of its card and over the code box
+@media (min-width: 768px) {
+  .box-preview-codes .preview {
+    justify-content: flex-start !important;
+    overflow-x: auto;
+    padding: 24px 8px;
+  }
+
+  .box-preview-codes .preview > * {
+    min-width: min-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// a component's floating parts (like a round badge) stay inside its own preview box,
+// instead of landing on Kitly's card or covering the Edit button
+.box-preview-codes .preview {
+  position: relative;
+}
+
+// desktop too: the new Kitly Copilot chat look (before, it was only on the phone)
+@media (min-width: 768px) {
+  .message-box {
+    border-radius: 24px !important;
+
+    // "Kitly Copilot" title with a small magic-wand icon
+    > p:first-child {
+      font-weight: 800;
+      color: #6d1c29;
+      border-bottom-color: #f7e1e5 !important;
+
+      &::before {
+        content: "\e2ca";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: #d94a5e;
+        margin-right: 8px;
+      }
+    }
+
+    // chat bubbles with one small corner, like chat apps
+    .chat {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      line-height: 1.4;
+      overflow-wrap: anywhere; // long code words wrap instead of sticking out
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .chat.user-text {
+      background: #b23548; // Kitly's darker pink, so white text is easy to read
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat.assistant-text {
+      background: #fdf1f3;
+      color: #6d1c29;
+      border-bottom-left-radius: 4px;
+    }
+
+    // the text box: a round pill with the send button inside
+    form > .d-flex {
+      align-items: flex-end;
+      gap: 8px;
+      background: #fdf1f3;
+      border-radius: 24px;
+      padding: 6px 6px 6px 16px;
+      transition: box-shadow 0.2s;
+
+      &:focus-within {
+        box-shadow: 0 0 0 3px rgba(217, 74, 94, 0.2);
+      }
+
+      > div {
+        flex: 1;
+        min-width: 0;
+        margin-bottom: 0 !important;
+      }
+    }
+
+    textarea {
+      min-height: 88px; // about 3 lines
+      padding: 8px 0;
+      border: 0;
+      background: transparent !important;
+      box-shadow: none !important;
+      resize: none;
+      color: #6d1c29;
+    }
+
+    .submit-btn {
+      flex-shrink: 0;
+    }
+  }
+}

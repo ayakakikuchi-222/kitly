@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :ui_kits, only: [:index, :create, :show, :destroy] do
     resources :components, only: [:create]
     resources :messages, only: [ :create ]
+    resource :status, only: :show, controller: "kit_statuses"
   end
   resources :components, only: [:show, :update, :destroy ] do
     resources :messages, only: [ :create ]

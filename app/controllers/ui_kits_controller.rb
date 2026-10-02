@@ -15,6 +15,7 @@ class UiKitsController < ApplicationController
   def create
     @ui_kit = current_user.ui_kits.new
     ask_llm_to_set_ui_kit_details(params[:theme_prompt])
+    @ui_kit.generating = true # the kit page shows the loading screen until the AI is done
 
     if @ui_kit.save
       # ask_llm_to_create_component

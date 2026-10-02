@@ -30,3 +30,45 @@
   height: 180px;
   object-fit: cover;
 }
+// Live preview of each kit's components on the Dashboard cards
+.kit-preview {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0; // same round corners as the card
+  background: #fff;
+  border-bottom: 1px solid #f7e1e5;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250%;            // draw the mini page 2.5x bigger...
+    height: 250%;
+    transform: scale(0.4);  // ...then shrink it to 40%, like a thumbnail
+    transform-origin: top left;
+    border: 0;
+    pointer-events: none;
+  }
+}
+
+// an invisible link over the preview, so clicking the preview opens the kit
+.kit-preview__link {
+  position: absolute;
+  inset: 0;
+}
+
+// keep the delete ✕ on top of the preview, on a white circle so it shows on dark navbars
+.ui-kits-index .card > form {
+  z-index: 2;
+
+  .btn-icon-delete {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 999px;
+  }
+}
+
+// the photo cards get the same round top corners as the preview cards
+.kit-thumb {
+  border-radius: 20px 20px 0 0;
+}
