@@ -1,4 +1,7 @@
 <%= render "shared/breadcrumbs", ui_kit: @ui_kit, current_page: "ui_kit" %>
+<% if @ui_kit.still_generating? %>
+  <%= render "ui_kits/generating", ui_kit: @ui_kit %>
+<% else %>
 <div class="container my-5">
 
   <% if @components_by_category.any? %>
@@ -45,7 +48,7 @@
               input_html: { class: "message-textarea" } %>
             <%= button_tag type: "submit",
               class: "btn btn-primary rounded-circle submit-btn" do %>
-              <i class="fa-solid fa-arrow-up-long"></i>
+              <i class="fa-solid fa-reply"></i>
             <% end %>
           </div>
         <% end %>
@@ -53,3 +56,4 @@
     </div>
   </div>
 </div>
+<% end %>

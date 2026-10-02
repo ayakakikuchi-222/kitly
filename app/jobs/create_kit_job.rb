@@ -8,5 +8,8 @@ class CreateKitJob < ApplicationJob
     ruby_llm_chat.with_instructions(ui_kit.create_multiple_component_instructions)
 
     ruby_llm_chat.ask(ui_kit.description)
+  ensure
+    # the kit page stops showing the loading screen, even if the AI failed
+    ui_kit.update_column(:generating, false)
   end
 end

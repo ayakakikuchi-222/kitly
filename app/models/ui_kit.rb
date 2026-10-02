@@ -6,6 +6,15 @@ class UiKit < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
+  # The 4 components the AI creates for every new kit (same order as create_multiple_component_instructions)
+  STARTER_COMPONENTS = %w[Navbar Button Card Form].freeze
+
+  # True while the AI is still creating this kit's first components.
+  # Stops after an hour, in case the job never finished (e.g. the server was restarted).
+  def still_generating?
+    generating? && components.size < STARTER_COMPONENTS.size && created_at > 1.hour.ago
+  end
+
   def context
     "You are an expert frontend designer that is a master of HTML and CSS. You are creating a new UI component with a user definined theme with the (ui_kit_id: #{id}) called #{name} with a description of #{description}"
   end
