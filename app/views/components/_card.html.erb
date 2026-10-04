@@ -8,10 +8,10 @@
   <div class="box-preview-codes d-flex">
     <div class="preview w-50 d-flex justify-content-center align-items-center">
       <style>
-        <%= component.css_code %>
+        <%= raw component.css_code %>
       </style>
       <% if component.html_code.present? %>
-        <%= component.html_code.html_safe %>
+        <%= component_preview_html(component) %>
       <% end %>
     </div>
     <div class="codes w-50">

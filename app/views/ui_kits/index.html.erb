@@ -24,8 +24,13 @@
             <i class="fa-solid fa-trash icon-trash"></i>
           <% end %>
 
-          <% if (img = ui_kit_image(ui_kit)) %>
-            <%= image_tag img, class: "card-img-top kit-thumb", alt: ui_kit.name %>
+          <% if ui_kit.components.any? %>
+            <div class="kit-preview">
+              <iframe srcdoc="<%= kit_preview_srcdoc(ui_kit) %>" sandbox="allow-same-origin" tabindex="-1" title="<%= ui_kit.name %> preview"></iframe>
+              <%= link_to "", ui_kit_path(ui_kit), class: "kit-preview__link", tabindex: -1, aria: { hidden: true } %>
+            </div>
+          <% else %>
+            <%= image_tag ui_kit_image(ui_kit), class: "card-img-top kit-thumb", alt: ui_kit.name %>
           <% end %>
 
           <div class="card-body d-flex flex-column">

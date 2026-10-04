@@ -1,0 +1,32 @@
+<%# Loading screen for a new kit, shown until the AI has made its components.
+    The kit-progress controller asks for the status every few seconds, then reloads the page
+    so all the components appear together. %>
+<% steps = UiKit::STARTER_COMPONENTS %>
+<% ready = [ui_kit.components.size, steps.size].min %>
+<div class="container kit-generating"
+     data-controller="kit-progress"
+     data-kit-progress-url-value="<%= ui_kit_status_path(ui_kit) %>">
+  <div class="kit-generating__card">
+    <div class="kit-generating__spinner" aria-hidden="true"></div>
+
+    <h1 class="kit-generating__title">Designing your UI kit</h1>
+    <p class="kit-generating__text">
+      Kitly Copilot is building <strong><%= ui_kit.name %></strong>.
+      All&nbsp;<%= steps.size %> components will appear here together when they're ready.
+    </p>
+
+    <ol class="kit-generating__steps">
+      <% steps.each_with_index do |step, index| %>
+        <li class="kit-generating__step<%= " is-done" if index < ready %><%= " is-active" if index == ready %>"
+            data-kit-progress-target="step">
+          <span class="kit-generating__dot" aria-hidden="true"></span>
+          <%= step %>
+        </li>
+      <% end %>
+    </ol>
+
+    <p class="kit-generating__count" role="status" aria-atomic="true">
+      <strong data-kit-progress-target="count"><%= ready %></strong> of <%= steps.size %> ready · this page updates by&nbsp;itself
+    </p>
+  </div>
+</div>
