@@ -86,7 +86,7 @@ GEM
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
-    autoprefixer-rails (10.4.21.0)
+    autoprefixer-rails (10.6.1.0)
       execjs (~> 2)
     base64 (0.3.0)
     bcrypt (3.1.22)
